@@ -3,10 +3,10 @@ package com.arsatapathy.queue.producer;
 import java.time.LocalTime;
 import java.util.concurrent.BlockingQueue;
 
-public class ProducerQueue implements Runnable {
+public class Producer implements Runnable {
     private final BlockingQueue<String> queue;
 
-    public ProducerQueue(BlockingQueue<String> queue) {
+    public Producer(BlockingQueue<String> queue) {
        this.queue = queue;
     }
 

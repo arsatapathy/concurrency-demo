@@ -2,10 +2,10 @@ package com.arsatapathy.queue.consumer;
 
 import java.util.concurrent.BlockingQueue;
 
-public class ConsumerQueue implements Runnable {
+public class Consumer implements Runnable {
     private final BlockingQueue<String> queue;
 
-    public ConsumerQueue(BlockingQueue<String> queue) {
+    public Consumer(BlockingQueue<String> queue) {
         this.queue = queue;
     }
 
