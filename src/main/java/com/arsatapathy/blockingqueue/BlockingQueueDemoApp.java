@@ -1,7 +1,7 @@
-package com.arsatapathy.queue;
+package com.arsatapathy.blockingqueue;
 
-import com.arsatapathy.queue.consumer.Consumer;
-import com.arsatapathy.queue.producer.Producer;
+import com.arsatapathy.blockingqueue.consumer.Consumer;
+import com.arsatapathy.blockingqueue.producer.Producer;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;

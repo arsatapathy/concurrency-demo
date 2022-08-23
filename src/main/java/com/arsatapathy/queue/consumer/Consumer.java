@@ -1,24 +1,21 @@
 package com.arsatapathy.queue.consumer;
 
-import java.util.concurrent.BlockingQueue;
+import java.util.List;
 
 public class Consumer implements Runnable {
-    private final BlockingQueue<String> queue;
+    private final List<String> queue;
 
-    public Consumer(BlockingQueue<String> queue) {
+    public Consumer(List<String> queue) {
         this.queue = queue;
     }
 
     @Override
     public void run() {
-        while (true) {
-            try {
-                String message = queue.take();
+        while (!queue.isEmpty()) {
+                String message = queue.remove(0);
 
-                System.out.println("consumed " + message);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+                System.out.println(message);
         }
     }
+
 }

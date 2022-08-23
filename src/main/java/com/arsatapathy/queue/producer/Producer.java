@@ -1,27 +1,43 @@
 package com.arsatapathy.queue.producer;
 
 import java.time.LocalTime;
-import java.util.concurrent.BlockingQueue;
+import java.util.List;
 
 public class Producer implements Runnable {
-    private final BlockingQueue<String> queue;
+    private final List<String> queue;
 
-    public Producer(BlockingQueue<String> queue) {
-       this.queue = queue;
+    private boolean stopped;
+
+    public Producer(List<String> queue) {
+        this.queue = queue;
     }
+
+    private boolean hasStopped() {
+        return stopped;
+    }
+
+    public void stop() {
+        stopped = true;
+    }
+
 
     @Override
     public void run() {
+        int count = 0;
 
-        while (true) {
+        while (!hasStopped()) {
+            count += 1;
+
+            LocalTime localTime = LocalTime.now();
+            queue.add(count + ". Time " + localTime);
+
             try {
-                LocalTime localTime = LocalTime.now();
-
-                queue.put(" " + localTime);
-                Thread.sleep(2000L);
+                Thread.sleep(1L);
             } catch (Exception e) {
                 e.printStackTrace();
+                throw new RuntimeException(e.getMessage());
             }
         }
     }
+
 }
