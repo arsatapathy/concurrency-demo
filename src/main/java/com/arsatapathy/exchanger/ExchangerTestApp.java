@@ -27,7 +27,9 @@ public class ExchangerTestApp {
                     str += ch++;
                 }
                 try {
+                    System.out.println("Put : " + str);
                     str = exchanger.exchange(str);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
